@@ -1,0 +1,37 @@
+<style>
+    .right {
+        float: right;
+        font-size: 20pt;
+      }
+
+</style>
+<div class="center">
+ <a class="right" href="/logout"> Logout</a>
+<br>
+<h3>Result of Students</h3>
+<a class="right" href="/student"><i class="fa fa-plus"></i> Add New Result</a> 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Roll No.</th>
+            <th>Date Of Birth</th>
+            <th>Score</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.Name}}</td>
+            <td>{{this.RollNo}}</td>
+            <td>{{this.DateOfBirth}}</td>
+            <td>{{this.Score}}</td>
+            <td>
+                 <a href="/student/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/student/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true">
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

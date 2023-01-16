@@ -1,0 +1,64 @@
+<style>
+    .right {
+        float: right;
+        font-size: 20pt;
+      }
+
+</style>
+<script>
+function validateForm() {
+  let x = document.forms["myForm"]["RollNo"].value;
+  if (isNaN(x)) {
+    alert("Roll Number must be a number");
+    return false;
+                 } 
+  var nameRegex = /^[a-zA-Z\-]+$/;
+  let y = document.forms["myForm"]["Name"].value;
+    var validUsername = y.match(nameRegex);
+    if(validUsername == null){
+        alert("Name can contain only characters A-Z, a-z and '-'");
+        return false;
+    }
+    let z = document.forms["myForm"]["Score"].value;
+  if (isNaN(z)) {
+    alert("Score must be a number ");
+    return false;
+  }
+}
+
+</script>
+<div class="center">
+<h1>{{viewTitle}} <a class="right" href="/logout"> Logout</a>
+</h1>
+<br>
+<form name="myForm" action="/student" method="POST" autocomplete="off" onsubmit="return validateForm()">
+    <input type="hidden" name="_id" value="{{student._id}}">
+    <div class="form-group">
+        <label>Roll No</label>
+        <input type="text" class="form-control"  name="RollNo" placeholder="Roll No" value="{{student.RollNo}}" required="required" >
+        <div class="text-danger">
+            {{student.RollNoError}}</div>
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="Name" placeholder="Name" value="{{student.Name}}" required="required">
+        <div class="text-danger">
+            {{student.NameError}}</div>
+    </div>
+
+        <div class="form-group">
+            <label>Date Of Birth</label>
+            <input type="date" class="form-control" name="DateOfBirth" placeholder="Date Of Birth" value="{{student.DateOfBirth}}" required="required" >
+        </div>
+
+    <div class="form-group">
+        <label>Score</label>
+        <input type="text" class="form-control" name="Score" placeholder="Score" value="{{student.Score}}" required="required">
+        <div class="text-danger">
+            {{student.ScoreError}}</div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-secondary" href="/student/list"><i class="fa fa-list-alt"></i> View All</a>
+    </div>
+</form>

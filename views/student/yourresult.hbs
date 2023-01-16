@@ -1,0 +1,36 @@
+<style>
+    .right {
+        float: right;
+        font-size: 20pt;
+      }
+
+</style>
+<div class="center">
+    <h2><a class="right" href="/back">Home</a></h2>
+
+<h2>{{viewTitle}}
+</h2>
+<br>
+ 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Roll No.</th>
+            <th>Date Of Birth</th>
+            <th>Score</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each res}}
+        <tr>
+            <td>{{this.Name}}</td>
+            <td>{{this.RollNo}}</td>
+            <td>{{this.DateOfBirth}}</td>
+            <td>{{this.Score}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
