@@ -8,6 +8,7 @@ flash = require('express-flash')
 const { body, validationResult } = require('express-validator');
 
 
+
 router.get('/student', (req, res) => {
     res.render("student/addOrEdit", {
         viewTitle: "Add New Result"
@@ -103,7 +104,11 @@ function insertRecord(req, res) {
     student.Score = req.body.Score.trim();
     student.save((err, doc) => {
         if (!err)
-            res.redirect('student/list');
+            res.render("student/addoredit",{
+                isUpdate:false,
+                updated:'Inserted Successfully',
+                viewTitle:'Add Result'
+            });
         else {
             if (err.name == 'ValidationError') {
                 handleValidationError(err, req.body);
@@ -120,7 +125,11 @@ function insertRecord(req, res) {
 
 function updateRecord(req, res) {
     Student.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true }, (err, doc) => {
-        if (!err) { res.redirect('student/list'); }
+        if (!err) { res.render("student/addoredit",{
+            isUpdate:true,
+            updated:'Updated Successfully',
+            viewTitle:'Update Result'
+        }); }
         else {
             if (err.name == 'ValidationError') {
                 handleValidationError(err, req.body);
@@ -168,7 +177,7 @@ function handleValidationError(err, body) {
 router.get('/student/:id', (req, res) => {
     Student.findById(req.params.id, (err, doc) => {
         if (!err) {
-            res.render("student/addOrEdit", {
+            res.render("student/updateform", {
                 viewTitle: "Update Student Result",
                 student: doc
             });
