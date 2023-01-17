@@ -6,13 +6,6 @@
 
 </style>
 <script>
-     window.history.forward();
-        function noBack() {
-            window.history.forward();
-        }
-        setTimeout("preventBack()", 0);
-          
-        window.onunload = function () { null };
 function validateForm() {
   let x = document.forms["myForm"]["RollNo"].value;
   if (isNaN(x)) {
@@ -43,7 +36,7 @@ function validateForm() {
     <input type="hidden" name="_id" value="{{student._id}}">
     <div class="form-group">
         <label>Roll No</label>
-           <input  type="text"  class="form-control"   name="RollNo" placeholder="Roll No" value="{{student.RollNo}}" required="required" >
+           <input  type="text" disabled class="form-control"   name="RollNo" placeholder="Roll No" value="{{student.RollNo}}" required="required" >
         <div class="text-danger">
             {{student.RollNoError}}</div>
     </div>
@@ -56,7 +49,7 @@ function validateForm() {
 
         <div class="form-group">
             <label>Date Of Birth</label>
-            <input type="date" class="form-control" min='2002-01-01' max='2003-12-31' name="DateOfBirth" placeholder="Date Of Birth" value="{{student.DateOfBirth}}" required="required" >
+            <input type="date" class="form-control" min='2002-10-01' max='2003-10-31' name="DateOfBirth" placeholder="Date Of Birth" value="{{student.DateOfBirth}}" required="required" >
         </div>
 
     <div class="form-group">
