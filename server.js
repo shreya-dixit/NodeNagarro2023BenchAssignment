@@ -1,9 +1,6 @@
+    
 require('./models/db');
-const mongoose = require('mongoose');
-//const Student = mongoose.model('Student');
-//const { validateDOB } = require('validator')
-//const formTemplet = require('./form')
-//const {validationResult} = require('express-validator')
+
 const express = require('express');
 const Handlebars = require('handlebars');
 var app = express();
@@ -11,6 +8,9 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 app.listen(3000, () => {
     console.log('Express server started at port : 3000');
 });
+
+
+
 const path = require('path');
 const bodyparser = require('body-parser');
 
@@ -29,3 +29,4 @@ app.use(bodyparser.json());
   
 
  app.use('/', studentController);
+ 
